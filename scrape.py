@@ -6,16 +6,16 @@ import sys
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
-
-if len(sys.argv) < 2:
-    print('please enter the name of your browser as the only argument')
-    print('python scrape.py chrome|firefox')
-    sys.exit(1)
-browser = sys.argv[1]
+browser = 'firefox'
+if len(sys.argv) == 2:
+    browser = sys.argv[1]
 if browser.lower() == 'firefox':
     driver = selenium.webdriver.Firefox()
 elif browser.lower() == 'chrome':
     driver = selenium.webdriver.Chrome()
+else:
+    print(f'unsupported browser - {browser} - contact me at github or open an issue to get support')
+    sys.exit(1)
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
 time.sleep(7)
