@@ -2,10 +2,20 @@
 # app that calls api must be solver.py
 import selenium
 import time
+import sys
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
-driver = selenium.webdriver.Firefox()
+
+if len(sys.argv) < 2:
+    print('please enter the name of your browser as the only argument')
+    print('python scrape.py chrome|firefox')
+    sys.exit(1)
+browser = sys.argv[1]
+if browser.lower() == 'firefox':
+    driver = selenium.webdriver.Firefox()
+elif browser.lower() == 'chrome':
+    driver = selenium.webdriver.Chrome()
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
 time.sleep(7)
@@ -15,6 +25,7 @@ for btn in btns:
     if btn.text.lower() == 'play':
         found = True
         driver.execute_script("arguments[0].click();",btn)
+        
 if not found:
     print('unable to get todays spelling-bee, please try again')
 time.sleep(5)
