@@ -14,7 +14,8 @@ if browser.lower() == 'firefox':
 elif browser.lower() == 'chrome':
     driver = selenium.webdriver.Chrome()
 else:
-    print(f'unsupported browser - {browser} - contact me at github or open an issue to get support')
+    print(f'unsupported browser called: {browser}')
+    print(f'contact me at github or open an issue to get {browser} support')
     sys.exit(1)
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
