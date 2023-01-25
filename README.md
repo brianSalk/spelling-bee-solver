@@ -3,8 +3,8 @@ a bot that can solve the newyorktimes spellingbee
 
 ### How to use:
 As of now this script needs to be run from a Unix terminal.  \
-**0)** clone this repo to your computer `git clone <reponame>` \
-**1)** change into the new directory `cd <reponame>` \
+**0)** clone this repo to your computer `git clone https://github.com/brianSalk/spelling-bee-solver.git` \
+**1)** change into the new directory `cd spelling_bee_solver` \
 **2)** run the command, optional arg is browser (firefox is default) `python spelling_bee_solver.py [chrome|firefox]` 
 
 ### Contribute:
