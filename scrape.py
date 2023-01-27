@@ -1,5 +1,3 @@
-# site must be called https://solvethespellingbee.com/
-# app that calls api must be solver.py
 import selenium
 import time
 import sys
@@ -78,4 +76,3 @@ for word in good_words:
     time.sleep(1)
     enter_button.click()
     driver.execute_script("arguments[0].click();", enter_button)
-
