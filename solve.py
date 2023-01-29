@@ -70,7 +70,6 @@ for word in good_words:
     for char in word:
         time.sleep(.5)
         btns[char].click()    
-    print('end inner loop')
     time.sleep(1)
     enter_button.click()
     driver.execute_script("arguments[0].click();", enter_button)
