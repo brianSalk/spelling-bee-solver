@@ -65,9 +65,7 @@ for each in words:
 
 # find enter button
 enter_button = driver.find_element(By.CLASS_NAME, 'hive-action__submit')
-print(enter_button, 'enter button')
 
-print(good_words)
 for word in good_words:
     for char in word:
         time.sleep(.5)
