@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 parser = argparse.ArgumentParser()
 parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox")
 parser.add_argument("-l","--login", action='store_true', help='use to manually log in to NYT')
+parser.add_argument("-v", "--verbose", action="store_true", help='print words that are being tried')
 args = parser.parse_args()
 
 # validate arguments 
@@ -72,6 +73,8 @@ for each in words:
             break
     if is_valid and middle_letter in each:
         good_words.append(each)
+if args.verbose:
+    print(good_words)
 # find enter button
 enter_button = driver.find_element(By.CLASS_NAME, 'hive-action__submit')
 
