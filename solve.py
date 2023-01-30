@@ -1,20 +1,30 @@
 import selenium
 import time
 import sys
+import argparse
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
+# argparse stuff
+parser = argparse.ArgumentParser()
+parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox")
+parser.add_argument("-l","--login", action='store_true', help='use to manually log in to NYT')
+args = parser.parse_args()
 
-browser = 'firefox'
-if len(sys.argv) == 2:
-    browser = sys.argv[1]
-if browser.lower() == 'firefox':
+# validate arguments 
+if not args.browser or args.browser == 'firefox':
     driver = selenium.webdriver.Firefox()
-elif browser.lower() == 'chrome':
+elif args.browser == 'chrome':
     driver = selenium.webdriver.Chrome()
 else:
-    print(f'unsupported browser called: {browser}')
-    print(f'contact me at github or open an issue to get {browser} support')
+    print(f'unsupported browser called: {args.browser}')
+    print(f'contact me at github or open an issue to get {args.browser} support')
     sys.exit(1)
+
+if args.login: # loggin to NYT
+    driver.get('https://myaccount.nytimes.com/auth/enter-email?redirect_uri=https%3A%2F%2Fwww.nytimes.com%2Fpuzzles%2Fspelling-bee&amp;response_type=cookie&amp;client_id=games&amp;application=crosswords&amp;asset=navigation-bar')
+    input('press any button to continue')
+
+    # enter email
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
 time.sleep(7)
@@ -55,6 +65,7 @@ with open('english_no_proper', 'r') as f:
 
 good_words = []
 for each in words:
+    each = each.lower()
     is_valid = True
     for bad_char in bad_letters:
         if bad_char in each:
@@ -62,7 +73,7 @@ for each in words:
             break
     if is_valid and middle_letter in each:
         good_words.append(each)
-
+print(good_words)
 # find enter button
 enter_button = driver.find_element(By.CLASS_NAME, 'hive-action__submit')
 
