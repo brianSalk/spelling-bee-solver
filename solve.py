@@ -73,7 +73,6 @@ for each in words:
             break
     if is_valid and middle_letter in each:
         good_words.append(each)
-print(good_words)
 # find enter button
 enter_button = driver.find_element(By.CLASS_NAME, 'hive-action__submit')
 
