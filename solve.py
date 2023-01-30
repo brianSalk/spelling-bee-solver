@@ -22,7 +22,7 @@ else:
 
 if args.login: # loggin to NYT
     driver.get('https://myaccount.nytimes.com/auth/enter-email?redirect_uri=https%3A%2F%2Fwww.nytimes.com%2Fpuzzles%2Fspelling-bee&amp;response_type=cookie&amp;client_id=games&amp;application=crosswords&amp;asset=navigation-bar')
-    input('press any button to continue')
+    input('press any button to continue after logging in ')
 
     # enter email
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
