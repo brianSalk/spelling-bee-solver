@@ -6,14 +6,14 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 # argparse stuff
 parser = argparse.ArgumentParser()
-parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox")
+parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox", default='firefox')
 parser.add_argument("-l","--login", action='store_true', help='use to manually log in to NYT')
 parser.add_argument("-v", "--verbose", action="store_true", help='print words that are being tried')
 parser.add_argument("-S","--no_solve",action="store_true", help='do not solve, only list words in terminal')
 args = parser.parse_args()
 
 # validate arguments 
-if not args.browser or args.browser == 'firefox':
+if args.browser == 'firefox':
     driver = selenium.webdriver.Firefox()
 elif args.browser == 'chrome':
     driver = selenium.webdriver.Chrome()
