@@ -2,6 +2,7 @@ import selenium
 import time
 import sys
 import argparse
+import word_proc
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 # argparse stuff
@@ -64,16 +65,7 @@ with open('english_no_proper', 'r') as f:
         word = word.replace('\n','')
         words.append(word)
 
-good_words = []
-for each in words:
-    each = each.lower()
-    is_valid = True
-    for bad_char in bad_letters:
-        if bad_char in each:
-            is_valid = False
-            break
-    if is_valid and middle_letter in each:
-        good_words.append(each)
+good_words = word_proc.get_good_words(bad_letters, words)
 if args.no_solve:
     print(good_words)
     sys.exit(0)
