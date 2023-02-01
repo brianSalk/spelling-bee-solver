@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 def get_good_words(bad_letters,words,middle_letter):
     good_words = []
     for each in words:
@@ -27,3 +28,4 @@ def get_good_letters_and_buttons(driver):
         btns[letter] = pol
     for cell in hive.find_elements(By.CLASS_NAME, 'cell-letter'):
         good_letters.append(cell.get_attribute('innerHTML'))
+    return (good_letters, btns)
