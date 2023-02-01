@@ -54,10 +54,7 @@ for cell in hive.find_elements(By.CLASS_NAME, 'cell-letter'):
     good_letters.append(cell.get_attribute('innerHTML'))
 
 
-bad_letters = []
-for letter in 'qwertyuiopasdfghjklzxcvbnm':
-    if letter not in good_letters:
-        bad_letters.append(letter)
+bad_letters = word_proc.get_bad_letters(good_letters)
 # get list of english dictionary words
 with open('english_no_proper', 'r') as f:
     words = []
