@@ -29,3 +29,10 @@ def get_good_letters_and_buttons(driver):
     for cell in hive.find_elements(By.CLASS_NAME, 'cell-letter'):
         good_letters.append(cell.get_attribute('innerHTML'))
     return (good_letters, btns)
+def get_words():
+    with open('english_no_proper', 'r') as f:
+        words = []
+        for word in f:
+            word = word.replace('\n','')
+            words.append(word)
+    return words

@@ -47,12 +47,7 @@ middle_letter = middle_letter.get_attribute('innerHTML')
 good_letters, btns = word_proc.get_good_letters_and_buttons(driver)
 bad_letters = word_proc.get_bad_letters(good_letters)
 # get list of english dictionary words
-with open('english_no_proper', 'r') as f:
-    words = []
-    for word in f:
-        word = word.replace('\n','')
-        words.append(word)
-
+words = word_proc.get_words()
 good_words = word_proc.get_good_words(bad_letters, words,middle_letter)
 if args.no_solve:
     print(good_words)
