@@ -65,7 +65,7 @@ with open('english_no_proper', 'r') as f:
         word = word.replace('\n','')
         words.append(word)
 
-good_words = word_proc.get_good_words(bad_letters, words)
+good_words = word_proc.get_good_words(bad_letters, words,middle_letter)
 if args.no_solve:
     print(good_words)
     sys.exit(0)

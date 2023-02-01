@@ -1,4 +1,4 @@
-def get_good_words(bad_letters,words):
+def get_good_words(bad_letters,words,middle_letter):
     good_words = []
     for each in words:
         each = each.lower()
