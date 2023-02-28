@@ -4,7 +4,6 @@ import sys
 import argparse
 import word_proc
 from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup
 # argparse stuff
 parser = argparse.ArgumentParser()
 parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox", default='firefox')
