@@ -4,6 +4,9 @@ import sys
 import argparse
 import word_proc
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait         
+from selenium.webdriver.support import expected_conditions as EC
+
 # argparse stuff
 parser = argparse.ArgumentParser()
 parser.add_argument("--browser", help="Browser used to solve spellingbee, default is firefox", default='firefox')
@@ -24,8 +27,8 @@ else:
 
 if args.login: # loggin to NYT
     driver.get('https://myaccount.nytimes.com/auth/enter-email?redirect_uri=https%3A%2F%2Fwww.nytimes.com%2Fpuzzles%2Fspelling-bee&amp;response_type=cookie&amp;client_id=games&amp;application=crosswords&amp;asset=navigation-bar')
-    input('press any button to continue after logging in ')
-
+    wait = WebDriverWait(driver, 2_000)
+    wait.until(EC.url_to_be("https://www.nytimes.com/?login=email&auth=login-email"))
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
 time.sleep(7)
