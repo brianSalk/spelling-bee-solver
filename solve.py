@@ -31,19 +31,11 @@ if args.login: # loggin to NYT
     wait.until(EC.url_to_be("https://www.nytimes.com/?login=email&auth=login-email"))
 url = 'https://www.nytimes.com/puzzles/spelling-bee'
 driver.get(url)
-time.sleep(7)
-btns = driver.find_elements(By.TAG_NAME, 'button')
-found = False
-for btn in btns:
-    if btn.text.lower() == 'play':
-        found = True
-        driver.execute_script("arguments[0].click();",btn)
+plat_btn = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//button[text() ='Play']")))
+driver.execute_script("arguments[0].click();",plat_btn)
         
-if not found:
-    print('unable to get todays spelling-bee, please try again')
-time.sleep(5)
 
-middle_letter = driver.find_element(By.XPATH,"//*[@class='cell-letter' or @class='center']")
+middle_letter = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,"//*[@class='cell-letter' or @class='center']")))
 middle_letter = middle_letter.get_attribute('innerHTML')
 
 good_letters, btns = word_proc.get_good_letters_and_buttons(driver)
