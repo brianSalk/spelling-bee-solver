@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 def get_good_words(bad_letters,words,middle_letter):
     """finds all words in the list 'words' that contain middle_letter
     at least once and does not contain any bad letters"""
@@ -25,7 +27,7 @@ def get_bad_letters(good_letters):
 def get_good_letters_and_buttons(driver):
     """returns a dict of buttons mapped to each letter as well as
     a list of all 6 of the letters that are in the hive"""
-    hive = driver.find_element(By.CLASS_NAME, 'hive')
+    hive = WebDriverWait(driver,5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'hive'))) # driver.find_element(By.CLASS_NAME, 'hive')
     good_letters = []
     btns = {}
     for pol in hive.find_elements(By.TAG_NAME, 'svg'):
