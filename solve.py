@@ -53,9 +53,8 @@ if args.verbose:
 element = driver.find_element(By.XPATH,"//div[@class='purr-blocker-card pz-hide-games-app pz-hide-newsreader']")
 driver.execute_script("arguments[0].style.visibility='hidden'", element)
     """
-time.sleep(1)
 # find enter button
-enter_button = driver.find_element(By.CLASS_NAME, 'hive-action__submit')
+enter_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'hive-action__submit')))
 for word in good_words:
     for char in word:
         btns[char].click()    
